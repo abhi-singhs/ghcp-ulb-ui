@@ -35,18 +35,73 @@ The mode toggle lives in the top‑right of the header.
   the original seed. Great for trying every flow, including bulk upload.
 - **Live** — Enter your **enterprise slug** and a **personal access token**, then
   **Test connection**. All calls go straight from your browser to `api.github.com`
-  (GitHub's REST API supports CORS).
+  (GitHub's REST API supports CORS). You'll need a **classic PAT** with the
+  `manage_billing:enterprise` scope — see
+  [Authentication & security](#authentication--security-read-this-for-live-mode).
 
 ## Authentication & security (read this for Live mode)
 
-- The token needs the **`manage_billing:enterprise`** scope (classic PAT), or the
-  fine‑grained **“Enterprise billing”** permission.
-- Because this app is 100% client‑side, **your token is held in the browser**. By default it
-  is kept only in memory for the session. If you tick **“Remember token”**, it is saved to
-  `localStorage` on your machine — only do this on a trusted device.
+> [!CAUTION]
+> **Use at your own risk.** This is an unofficial, community‑built tool. You use it
+> **entirely at your own risk**, and GitHub is **not responsible or liable** for any
+> loss, damage, token compromise, unexpected billing changes, or other liability
+> arising from your use of it. Review the source before connecting a real enterprise,
+> and connect only with a token that grants the **least privilege** necessary.
+
+### Which token you need
+
+The enterprise [Budgets REST API](https://docs.github.com/en/enterprise-cloud@latest/rest/billing/budgets?apiVersion=2026-03-10)
+that this app calls is only accessible to an **enterprise admin or billing manager**,
+authenticating with a **classic personal access token** that has the
+**`manage_billing:enterprise`** scope. **Fine‑grained personal access tokens are not
+supported** for these endpoints.
+
+`manage_billing:enterprise` is a **narrow** scope — it grants billing management only — but
+because this app runs **entirely in your browser** and holds your token there, still treat it
+carefully: grant **only** that one scope, set the **shortest expiration**, and **revoke** the
+token as soon as you're done.
+
+### Create the token
+
+1. Go to **GitHub → Settings → Developer settings → Personal access tokens →
+   Tokens (classic) → Generate new token (classic)**.
+2. Choose the **shortest expiration** that fits your task.
+3. Select **only** the **`manage_billing:enterprise`** scope. Leave **every other scope
+   unchecked**.
+4. Generate the token, copy it, and paste it into the **Personal access token** field. Do
+   **not** reuse this token for any other purpose.
+5. **Revoke the token** as soon as you no longer need it.
+
+### Where your token lives
+
+- **Your token is held in your browser only.** By default it is kept in memory for the
+  session and discarded when you close the tab.
+- If you tick **“Remember token”**, it is saved to `localStorage` on your machine — only do
+  this on a **trusted, private device**.
 - No token or budget data is ever sent anywhere except `api.github.com`. There is no server,
   analytics, or third‑party call.
 - All requests send `X‑GitHub‑Api‑Version: 2026-03-10`.
+
+### Keeping your credentials secure
+
+Treat your token like a password. Per GitHub's
+[Keeping your API credentials secure](https://docs.github.com/en/enterprise-cloud@latest/rest/authentication/keeping-your-api-credentials-secure)
+guide:
+
+- **Limit permissions and lifetime** — grant only the `manage_billing:enterprise` scope and
+  set the shortest expiration you need.
+- **Store it securely** — never commit a token to a repository (even a private one), and never
+  send it over unencrypted chat or email. If a team needs it, keep it in a secrets manager
+  such as [1Password](https://1password.com/),
+  [Azure Key Vault](https://azure.microsoft.com/products/key-vault), or
+  [HashiCorp Vault](https://www.hashicorp.com/products/vault).
+- **Don't share your token** — a token carries the owner's own access; grant people the
+  billing‑manager role instead of handing out a token.
+- **Don't persist it unnecessarily** — leave **“Remember token”** unticked so the token is
+  never written to `localStorage`.
+- **Have a remediation plan** — if a token is ever leaked, generate a replacement, update it
+  everywhere you use it, then delete the compromised one from **Settings → Developer settings →
+  Personal access tokens**.
 
 ## Bulk upload format
 

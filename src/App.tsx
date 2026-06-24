@@ -41,10 +41,20 @@ function App() {
               </p>
               <p>
                 Enter your enterprise slug and a personal access token above to
-                manage live budgets. The token needs the{' '}
-                <code>manage_billing:enterprise</code> scope (or fine-grained{' '}
-                “Enterprise billing” permission).
+                manage live budgets. You need a{' '}
+                <strong>classic PAT</strong> with the{' '}
+                <code>manage_billing:enterprise</code> scope only — grant
+                nothing more. (Fine-grained tokens aren't supported for the
+                billing API.)
               </p>
+              <div className="risk-callout" role="note">
+                <AlertIcon size={16} />
+                <span>
+                  <strong>Use at your own risk.</strong> GitHub is not
+                  responsible or liable for any loss, damage, or unexpected
+                  billing changes arising from your use of this unofficial tool.
+                </span>
+              </div>
               <p className="field-hint">
                 Prefer to explore first? Switch to <strong>Demo</strong> mode in
                 the top-right.{' '}
@@ -54,6 +64,14 @@ function App() {
                   rel="noreferrer"
                 >
                   API documentation
+                </Link>
+                {' · '}
+                <Link
+                  href="https://docs.github.com/en/enterprise-cloud@latest/rest/authentication/keeping-your-api-credentials-secure"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Keeping credentials secure
                 </Link>
               </p>
             </div>
