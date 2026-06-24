@@ -3,6 +3,7 @@ import {
   Banner,
   Button,
   FormControl,
+  IconButton,
   Spinner,
   TextInput,
 } from '@primer/react';
@@ -10,6 +11,7 @@ import {
   GlobeIcon,
   LockIcon,
   PencilIcon,
+  SyncIcon,
 } from '@primer/octicons-react';
 import {
   useCreateBudget,
@@ -33,7 +35,8 @@ function errorMessage(err: unknown): string {
 }
 
 export function UniversalBudgetCard() {
-  const { data, isLoading, isError, error } = useUniversalBudget();
+  const { data, isLoading, isFetching, isError, error, refetch } =
+    useUniversalBudget();
   const createBudget = useCreateBudget();
   const updateBudget = useUpdateBudget();
   const { addToast } = useToast();
@@ -107,6 +110,14 @@ export function UniversalBudgetCard() {
             (multi_user_customer scope).
           </p>
         </div>
+        {!editing && (
+          <IconButton
+            icon={SyncIcon}
+            aria-label="Refresh universal budget"
+            onClick={() => void refetch()}
+            loading={isFetching}
+          />
+        )}
         {!editing && !isLoading && (
           <Button leadingVisual={PencilIcon} onClick={startEdit}>
             {budget ? 'Edit' : 'Set budget'}
