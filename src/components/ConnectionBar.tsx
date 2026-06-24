@@ -13,6 +13,7 @@ import {
   MarkGithubIcon,
   PlugIcon,
   XCircleIcon,
+  AlertIcon,
 } from '@primer/octicons-react';
 import { useConnection } from '../context/connection';
 import { useToast } from '../context/toast';
@@ -118,7 +119,7 @@ export function ConnectionConfigRow() {
             type="password"
             className="token-input"
             value={settings.token}
-            placeholder="github_pat_… (manage_billing:enterprise)"
+            placeholder="ghp_… (classic · manage_billing:enterprise)"
             autoComplete="off"
             onChange={(e) => {
               update({ token: e.target.value });
@@ -156,6 +157,18 @@ export function ConnectionConfigRow() {
           </span>
         )}
       </div>
+      <p className="connection-bar__hint">
+        <AlertIcon size={12} />
+        <span>
+          Use a <strong>classic PAT</strong> with the{' '}
+          <strong>manage_billing:enterprise</strong> scope only — grant nothing
+          more.{' '}
+          <strong className="risk-emphasis">
+            You use this unofficial tool at your own risk; GitHub is not
+            responsible for any liability.
+          </strong>
+        </span>
+      </p>
     </div>
   );
 }

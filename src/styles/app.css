@@ -141,6 +141,28 @@ body {
   min-width: 280px;
 }
 
+.connection-bar__hint {
+  max-width: var(--ulb-max-width);
+  margin: 0 auto;
+  padding: 0 24px 10px;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.4;
+  color: var(--fgColor-muted, #59636e);
+}
+
+.connection-bar__hint svg {
+  flex: 0 0 auto;
+  margin-top: 2px;
+  fill: var(--fgColor-attention, #9a6700);
+}
+
+.risk-emphasis {
+  color: #700a12;
+}
+
 /* ---------- Card ---------- */
 .card {
   background-color: var(--bgColor-default, #ffffff);
@@ -402,6 +424,33 @@ code {
 .empty-state svg {
   margin-bottom: 12px;
   fill: var(--fgColor-muted, #59636e);
+}
+
+.risk-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 540px;
+  margin: 20px auto 4px;
+  padding: 12px 14px;
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--fgColor-default, #1f2328);
+  background-color: var(--bgColor-danger-muted, #ffebe9);
+  border: 1px solid var(--borderColor-danger-emphasis, #cf222e);
+  border-radius: var(--ulb-radius);
+}
+
+.risk-callout svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  margin-bottom: 0;
+  fill: var(--fgColor-danger, #d1242f);
+}
+
+.risk-callout strong {
+  color: var(--fgColor-danger, #d1242f);
 }
 
 .center-pad {
