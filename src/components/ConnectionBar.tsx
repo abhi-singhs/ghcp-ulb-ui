@@ -115,7 +115,7 @@ export function ConnectionConfigRow() {
             }}
           />
         </FormControl>
-        <FormControl>
+        <FormControl className="connection-bar__remember">
           <Checkbox
             checked={settings.rememberToken}
             onChange={(e) => update({ rememberToken: e.target.checked })}
