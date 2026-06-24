@@ -86,6 +86,19 @@ Then open the printed local URL. The app starts in **Demo** mode, so no token is
 `npm run build` emits a static `dist/` folder. Host it on any static host (GitHub Pages,
 Netlify, S3, etc.) — there is nothing server‑side to run.
 
+#### GitHub Pages (automated)
+
+This repo ships a [GitHub Actions workflow](./.github/workflows/deploy-pages.yml) that builds
+the app and publishes it to GitHub Pages on every push to `main` (and on demand via the
+Actions tab → **Deploy to GitHub Pages** → **Run workflow**).
+
+To enable it once: open **Settings → Pages** and set **Source** to **GitHub Actions**. The
+site is then served from `https://<owner>.github.io/ghcp-ulb-ui/`.
+
+> The Vite [`base`](./vite.config.ts) is set to `/ghcp-ulb-ui/` so asset URLs resolve under
+> that project‑pages subpath. If you deploy under a different repo name or to a custom domain,
+> update `base` accordingly.
+
 ## How it maps to the API
 
 | UI concept | Scope | Key fields |
