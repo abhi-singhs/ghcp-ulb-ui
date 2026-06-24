@@ -1,5 +1,9 @@
 # Copilot AI Credits · User‑Level Budgets
 
+> [!IMPORTANT]
+> **Unofficial:** This is an unofficial solution and is not affiliated with,
+> endorsed by, or supported by GitHub.
+
 A fully **client‑side** single‑page app for managing GitHub Copilot **AI Credits**
 user‑level budgets (ULB) across an enterprise. It talks **directly** to the
 [GitHub Budgets REST API](https://docs.github.com/en/enterprise-cloud@latest/rest/billing/budgets?apiVersion=2026-03-10)
@@ -111,3 +115,7 @@ papaparse (CSV) · SheetJS/xlsx (Excel).
 
 > Note: this project pins the patched SheetJS CDN build of `xlsx` (the npm package has
 > unaddressed security advisories).
+
+## License
+
+Released under the [MIT License](./LICENSE).

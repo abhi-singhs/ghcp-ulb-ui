@@ -77,6 +77,26 @@ body {
   gap: 24px;
 }
 
+/* ---------- Disclaimer ---------- */
+.app-disclaimer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 24px;
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--fgColor-attention, #9a6700);
+  background-color: var(--bgColor-attention-muted, #fff8c5);
+  border-bottom: 1px solid var(--borderColor-attention-emphasis, #d4a72c);
+}
+
+.app-disclaimer svg {
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
 .connection-bar {
   display: flex;
   flex-wrap: wrap;

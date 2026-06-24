@@ -1,5 +1,5 @@
 import { Link } from '@primer/react';
-import { CopilotIcon } from '@primer/octicons-react';
+import { CopilotIcon, AlertIcon } from '@primer/octicons-react';
 import { useConnection } from './context/connection';
 import { ConnectionConfigRow, ConnectionControls } from './components/ConnectionBar';
 import { UniversalBudgetCard } from './components/UniversalBudgetCard';
@@ -10,6 +10,13 @@ function App() {
 
   return (
     <div className="app-shell">
+      <div className="app-disclaimer" role="note">
+        <AlertIcon size={14} />
+        <span>
+          <strong>Unofficial:</strong> This is an unofficial solution and is not
+          affiliated with, endorsed by, or supported by GitHub.
+        </span>
+      </div>
       <header className="app-header">
         <div className="app-header__inner">
           <div className="app-header__title">
