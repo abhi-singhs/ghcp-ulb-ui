@@ -42,7 +42,7 @@ function mapRow(raw: RawRow, index: number): ParsedOverrideRow {
   );
 
   return {
-    rowNumber: index + 2, // +1 for header row, +1 for 1-based display
+    rowNumber: index + 1, // 1-based row number across data rows
     username,
     budgetAmount,
     errors,
