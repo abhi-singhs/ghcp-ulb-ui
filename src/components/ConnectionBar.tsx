@@ -3,12 +3,14 @@ import {
   Button,
   Checkbox,
   FormControl,
+  IconButton,
   Label,
   SegmentedControl,
   TextInput,
 } from '@primer/react';
 import {
   CheckCircleIcon,
+  MarkGithubIcon,
   PlugIcon,
   XCircleIcon,
 } from '@primer/octicons-react';
@@ -33,6 +35,15 @@ export function ConnectionControls() {
           Demo
         </SegmentedControl.Button>
       </SegmentedControl>
+      <IconButton
+        as="a"
+        href="https://github.com/abhi-singhs/ghcp-ulb-ui"
+        target="_blank"
+        rel="noreferrer"
+        icon={MarkGithubIcon}
+        aria-label="View source on GitHub"
+        variant="invisible"
+      />
       <ThemeToggle />
     </div>
   );
