@@ -104,11 +104,21 @@ body {
   gap: 12px;
 }
 
-.connection-bar__live {
+/* The element also carries `.app-subbar__inner` (align-items: center, defined
+   later with equal specificity), so combine both classes to win and align the
+   inputs, checkbox and button along a common bottom edge. */
+.app-subbar__inner.connection-bar__live {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
   gap: 12px;
+}
+
+/* The checkbox group is shorter than the inputs/button; give it a matching
+   control-height box and center its contents so it lines up with them. */
+.connection-bar__remember {
+  min-height: 32px;
+  align-items: center;
 }
 
 .app-subbar {
